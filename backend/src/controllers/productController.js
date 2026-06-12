@@ -258,15 +258,26 @@ export const createProduct = async (req, res) => {
       });
     }
 
+    const parsedPrice = parseFloat(Number(price).toFixed(2));
+    const parsedDiscount = Math.min(100, Math.max(0, Math.round(Number(discount) || 0)));
+    const parsedStock = Math.max(0, Math.round(Number(stock) || 0));
+
+    if (isNaN(parsedPrice) || parsedPrice < 0 || parsedPrice > 9999999.99) {
+      return res.status(400).json({
+        success: false,
+        error: { message: 'Price must be between 0 and 9,999,999.99' },
+      });
+    }
+
     const image = req.file ? `/uploads/${req.file.filename}` : null;
 
     const [product] = await db('products')
       .insert({
         name,
         category,
-        price: Number(price),
-        discount: Number(discount) || 0,
-        stock: Number(stock) || 0,
+        price: parsedPrice,
+        discount: parsedDiscount,
+        stock: parsedStock,
         image,
         description: description || '',
       })
@@ -302,9 +313,9 @@ export const updateProduct = async (req, res) => {
     const updateData = {};
     if (name !== undefined) updateData.name = name;
     if (category !== undefined) updateData.category = category;
-    if (price !== undefined) updateData.price = Number(price);
-    if (discount !== undefined) updateData.discount = Number(discount);
-    if (stock !== undefined) updateData.stock = Number(stock);
+    if (price !== undefined) updateData.price = parseFloat(Number(price).toFixed(2));
+    if (discount !== undefined) updateData.discount = Math.min(100, Math.max(0, Math.round(Number(discount))));
+    if (stock !== undefined) updateData.stock = Math.max(0, Math.round(Number(stock)));
     if (description !== undefined) updateData.description = description;
     if (req.file) updateData.image = `/uploads/${req.file.filename}`;
 
