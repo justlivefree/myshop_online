@@ -13,9 +13,11 @@ export const calculateDiscountedPrice = (price, discount) => {
 };
 
 const resolveImage = (image) => {
-  if (!image) return image;
-  if (image.startsWith('http://') || image.startsWith('https://')) {
-    return image;
+  if (!image) return '/images/lemaleparfume.webp';
+  // Strip old hardcoded localhost URLs → relative path
+  if (image.startsWith('http://localhost') || image.startsWith('https://localhost')) {
+    const url = new URL(image);
+    return url.pathname;
   }
   return image;
 };

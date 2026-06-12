@@ -7,7 +7,9 @@ import AdminOrders from './AdminOrders';
 import './Admin.css';
 
 const Admin = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(
+    () => localStorage.getItem('adminAuth') === 'true'
+  );
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [loginError, setLoginError] = useState('');
@@ -16,6 +18,7 @@ const Admin = () => {
   const handleLogin = (e) => {
     e.preventDefault();
     if (username === 'Admin2003' && password === 'Toxir203.') {
+      localStorage.setItem('adminAuth', 'true');
       setIsAuthenticated(true);
       setLoginError('');
     } else {
@@ -90,7 +93,7 @@ const Admin = () => {
           <Link to="/" className="admin-nav-link">Asosiy sayt</Link>
           <button
             className="admin-logout-btn"
-            onClick={() => setIsAuthenticated(false)}
+            onClick={() => { localStorage.removeItem('adminAuth'); setIsAuthenticated(false); }}
           >
             Chiqish
           </button>
