@@ -12,7 +12,7 @@ const Cart = () => {
   const { cart, removeFromCart, updateQuantity, clearCart, getTotalPrice, getTotalDiscount } = useContext(CartContext);
   const [showCheckout, setShowCheckout] = useState(false);
   const [customerName, setCustomerName] = useState('');
-  const [customerPhone, setCustomerPhone] = useState('');
+  const [customerPhone, setCustomerPhone] = useState('+998 ');
   const [locationUser, setLocationUser] = useState('');
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
@@ -105,14 +105,30 @@ const Cart = () => {
 
               <div className="form-group">
                 <label htmlFor="phone">{t.cart.phoneLabel}</label>
-                <input
-                  id="phone"
-                  type="tel"
-                  value={customerPhone}
-                  onChange={(e) => setCustomerPhone(e.target.value)}
-                  placeholder={t.cart.phonePlaceholder}
-                  required
-                />
+                <div className="phone-input-wrapper">
+                  <input
+                    id="phone"
+                    type="tel"
+                    value={customerPhone}
+                    onChange={(e) => {
+                      let val = e.target.value;
+                      // Always keep +998 prefix
+                      if (!val.startsWith('+998')) val = '+998 ';
+                      // Extract only digits after +998
+                      const digits = val.slice(4).replace(/\D/g, '').slice(0, 9);
+                      // Format: +998 XX XXX XX XX
+                      let formatted = '+998';
+                      if (digits.length > 0) formatted += ' ' + digits.slice(0, 2);
+                      if (digits.length > 2) formatted += ' ' + digits.slice(2, 5);
+                      if (digits.length > 5) formatted += ' ' + digits.slice(5, 7);
+                      if (digits.length > 7) formatted += ' ' + digits.slice(7, 9);
+                      setCustomerPhone(formatted);
+                    }}
+                    placeholder="+998 90 123 45 67"
+                    maxLength={17}
+                    required
+                  />
+                </div>
               </div>
               <div className="form-group">
                 <label htmlFor="locationUser">{t.cart.locationLabel}</label>

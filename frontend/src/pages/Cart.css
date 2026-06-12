@@ -475,6 +475,20 @@
   margin-bottom: 16px;
 }
 
+.phone-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.phone-input-wrapper input {
+  width: 100%;
+  letter-spacing: 0.1em;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--primary-black);
+}
+
 .checkout-actions {
   display: flex;
   gap: 12px;
