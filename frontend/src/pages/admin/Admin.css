@@ -41,7 +41,7 @@
   width: 100%;
   padding: 0.7rem 0.9rem;
   border: 1px solid var(--border-color, #e0e0e0);
-  border-radius: 8px;
+  border-radius: 999px;
   font-size: 0.95rem;
   transition: border-color 0.2s;
 }
@@ -49,6 +49,11 @@
 .admin-login-form input:focus {
   outline: none;
   border-color: var(--luxury-gold, #d4af37);
+}
+
+.admin-login-form .btn {
+  width: 100%;
+  margin-top: 0.5rem;
 }
 
 .login-error {
@@ -281,7 +286,7 @@
 .btn-delete {
   padding: 0.35rem 0.75rem;
   border: none;
-  border-radius: 6px;
+  border-radius: 999px;
   font-size: 0.8rem;
   cursor: pointer;
   text-decoration: none;
@@ -313,7 +318,7 @@
   max-width: 400px;
   padding: 0.65rem 1rem;
   border: 1px solid var(--border-color, #e0e0e0);
-  border-radius: 8px;
+  border-radius: 999px;
   font-size: 0.9rem;
 }
 
@@ -331,7 +336,7 @@
 .filter-btn {
   padding: 0.5rem 1rem;
   border: 1px solid var(--border-color, #e0e0e0);
-  border-radius: 8px;
+  border-radius: 999px;
   background: #fff;
   cursor: pointer;
   font-size: 0.85rem;
@@ -379,9 +384,20 @@
 .form-group textarea {
   padding: 0.65rem 0.9rem;
   border: 1px solid var(--border-color, #e0e0e0);
-  border-radius: 8px;
+  border-radius: 999px;
   font-size: 0.95rem;
   transition: border-color 0.2s;
+}
+
+.form-group textarea {
+  border-radius: 16px;
+}
+
+.form-group input[type="file"] {
+  border-radius: 12px;
+  padding: 0.5rem 0.9rem;
+  background: #fafafa;
+  cursor: pointer;
 }
 
 .form-group input:focus,
@@ -413,6 +429,11 @@
   display: flex;
   gap: 0.75rem;
   margin-top: 1.5rem;
+}
+
+.form-actions .btn {
+  flex: 1;
+  min-height: 50px;
 }
 
 /* Order Cards */
@@ -481,10 +502,11 @@
 .btn-deliver {
   padding: 0.35rem 0.85rem;
   background: var(--luxury-gold, #d4af37);
-  color: #fff;
+  color: #1a1a1a;
   border: none;
-  border-radius: 6px;
+  border-radius: 999px;
   font-size: 0.8rem;
+  font-weight: 700;
   cursor: pointer;
   transition: opacity 0.2s;
 }

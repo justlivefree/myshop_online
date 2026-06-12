@@ -173,4 +173,9 @@ export async function seed(knex) {
       created_at: new Date('2025-01-29'),
     },
   ]);
+
+  // Reset sequences so auto-increment works after explicit ID inserts
+  await knex.raw(`SELECT setval('products_id_seq', (SELECT MAX(id) FROM products))`);
+  await knex.raw(`SELECT setval('orders_id_seq', COALESCE((SELECT MAX(id) FROM orders), 0) + 1, false)`);
+  await knex.raw(`SELECT setval('order_items_id_seq', COALESCE((SELECT MAX(id) FROM order_items), 0) + 1, false)`);
 }
