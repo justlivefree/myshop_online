@@ -13,11 +13,11 @@ export const calculateDiscountedPrice = (price, discount) => {
 };
 
 const resolveImage = (image) => {
-  if (!image || image.startsWith('http://') || image.startsWith('https://')) {
+  if (!image) return image;
+  if (image.startsWith('http://') || image.startsWith('https://')) {
     return image;
   }
-  const base = process.env.API_URL || 'http://localhost:5000';
-  return `${base}${image}`;
+  return image;
 };
 
 export const formatProduct = (product) => ({
