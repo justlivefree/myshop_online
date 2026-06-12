@@ -179,19 +179,19 @@
 }
 
 .btn-deliver {
-  background: #28a745;
-  color: #fff;
+  background: var(--luxury-gold, #d4af37);
+  color: #1a1a1a;
   border: none;
   padding: 8px 20px;
-  border-radius: 20px;
+  border-radius: 999px;
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 700;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: opacity 0.2s;
 }
 
 .btn-deliver:hover {
-  background: #218838;
+  opacity: 0.85;
 }
 
 .login-form-wrapper {
@@ -233,7 +233,7 @@
   width: 100%;
   padding: 12px 16px;
   border: 1px solid rgba(37, 29, 18, 0.12);
-  border-radius: 12px;
+  border-radius: 999px;
   font-size: 15px;
   background: #fff;
   outline: none;
@@ -256,7 +256,7 @@
   width: 100%;
   padding: 12px;
   font-size: 16px;
-  border-radius: 12px;
+  border-radius: 999px;
   cursor: pointer;
 }
 

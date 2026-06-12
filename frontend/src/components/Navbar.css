@@ -93,7 +93,7 @@
 .nav-links {
   display: flex;
   list-style: none;
-  gap: 10px;
+  gap: 4px;
   flex: 1;
   justify-content: center;
   align-items: center;
@@ -105,13 +105,14 @@
   align-items: center;
   justify-content: center;
   min-height: 42px;
-  padding: 10px 16px;
+  padding: 8px 12px;
   border-radius: 999px;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 700;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--text-dark);
+  white-space: nowrap;
 }
 
 .nav-links a:hover,
@@ -123,8 +124,8 @@
 .nav-links a.active::after {
   content: "";
   position: absolute;
-  left: 14px;
-  right: 14px;
+  left: 10px;
+  right: 10px;
   bottom: 6px;
   height: 2px;
   border-radius: 999px;
